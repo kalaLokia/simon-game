@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-    color: tan;
+    color: #FEF2BF;
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
     padding-top: 50px;
@@ -50,4 +50,5 @@ h1 {
 
 .game-over {
     background-color: red;
+    opacity: 0.8;
 }

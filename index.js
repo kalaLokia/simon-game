@@ -17,36 +17,34 @@ $(document).on("keydown", function (event) {
 
 
 function newSequence() {
+    user_inputs = 0;
     n = randomNumber();
     gameLevel.push(colorButtons[n]);
-    buttonAnimation($("#" + colorButtons[n]));
-    console.log("Array: " + gameLevel);
+    $("#" + colorButtons[n]).fadeIn(100).fadeOut(100).fadeIn(100);
+    playSound(colorButtons[n]);
     $("h1").text("Level " + gameLevel.length);
-    user_inputs = 0;
 }
 
 
 function buttonClicks() {
-    console.log("Level : " + gameLevel.length);
+    buttonPressedAnimation($(this));
 
     if (play === false) {
         gameOver();
     }
-    else if (user_inputs >= gameLevel.length) {
+    else if (user_inputs >= gameLevel.length) {     //This never happens, but for a pre-caution
         gameOver();
-        play = false;
     }
     else if ($(this).attr("id") !== gameLevel[user_inputs]) {
-        play = false;
         gameOver();
     }
     else if (user_inputs === gameLevel.length - 1) {
-        buttonAnimation($(this));
+        playSound($(this).attr("id"));
         setTimeout(newSequence, 1000);
 
     }
     else {
-        buttonAnimation($(this));
+        playSound($(this).attr("id"));
         user_inputs += 1;
     }
 }
@@ -54,7 +52,8 @@ function buttonClicks() {
 
 function gameOver() {
     gameLevel = [];
-    buttonSound("wrong");
+    play = false;
+    playSound("wrong");
     $("body").addClass("game-over").delay(100).queue(function (next) {
         $("body").removeClass("game-over");
         next();
@@ -63,9 +62,7 @@ function gameOver() {
 }
 
 
-function buttonAnimation(pressedButton) {
-
-    buttonSound(pressedButton.attr("id"));
+function buttonPressedAnimation(pressedButton) {
     pressedButton.addClass("pressed").delay(100).queue(function (next) {
         pressedButton.removeClass("pressed");
         next();
@@ -73,36 +70,14 @@ function buttonAnimation(pressedButton) {
 }
 
 
-function buttonSound(button) {
-    switch (button) {
-        case "green":
-            var green_audio = new Audio("sounds/green.mp3");
-            green_audio.play();
-            break;
-        case "red":
-            var red_audio = new Audio("sounds/red.mp3");
-            red_audio.play();
-            break;
-        case "yellow":
-            var yellow_audio = new Audio("sounds/yellow.mp3");
-            yellow_audio.play();
-            break;
-        case "blue":
-            var blue_audio = new Audio("sounds/blue.mp3");
-            blue_audio.play();
-            break;
-        case "wrong":
-            var wrong_audio = new Audio("sounds/wrong.mp3");
-            wrong_audio.play();
-            break;
-        default:
-            console.log("Could not play the audio.");
-    }
+function playSound(sound) {
+    var audio = new Audio("sounds/" + sound + ".mp3");
+    audio.play();
 }
 
 
 function randomNumber() {
-    return Math.floor(Math.random() * 3);
+    return Math.floor(Math.random() * 4);
 }
 
 
