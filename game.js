@@ -1,5 +1,6 @@
 
 var n;
+var highscore = 0;
 var play = false;
 var colorButtons = ["green", "red", "yellow", "blue"];
 var gameLevel = [];
@@ -14,15 +15,6 @@ $(".start-btn").click(function () {
 
 
 $(".btn").click(buttonClicks);
-
-// // Made a button instead of tapping a keyboard key
-// $(document).on("keydown", function (event) {
-//     if (event.keyCode > 64 && event.keyCode <= 122 && play === false) {
-//         console.log("Game started");
-//         play = true;
-//         setTimeout(newSequence, 400);
-//     }
-// });
 
 
 function newSequence() {
@@ -60,7 +52,10 @@ function buttonClicks() {
 
 
 function gameOver() {
-    console.log('GAME OVER');
+    if (gameLevel.length > highscore) {
+        highscore = gameLevel.length;
+        $('#score').text(highscore);
+    }
     gameLevel = [];
     play = false;
     playSound("wrong");
@@ -82,6 +77,7 @@ function gameOver() {
 function toggleTitleElements() {
     $("h1").toggleClass("hide-me");
     $(".start-btn").toggleClass("hide-me");
+    $(".high-score").toggleClass("hide-me");
 }
 
 
