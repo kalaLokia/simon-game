@@ -66,7 +66,7 @@ function gameOver() {
     playSound("wrong");
     flashingRedScreenAnimation();
 
-    $("h1").text("Game Over.");
+    $("h1").text("Game Over");
 
     setTimeout(function () {
         $("h1").text("Try again!");
