@@ -13,22 +13,23 @@ body {
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
     margin: 75px 0;
+    line-height: 1.2;
 }
 
 .start-btn {
     position:absolute;
-    color: black;
     left: 25%;
     right: 25%;
     top: 70px;
-    padding-left: 40px;
-    padding-right: 40px;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
     padding-top: 40px;
     padding-bottom: 40px;
     border-radius: 25px;
     background-color: pink;
     border: 5px solid #faa5b2;
-    box-shadow: 0 0 5px #faa5b2;
+    box-shadow: 0 0 5px #faa5b5;
 }
 
 .container {
@@ -70,7 +71,7 @@ body {
     opacity: 0.8;
 }
 
-/* Phone view */
+/*Normal Screen Phone view */
 @media (max-width: 600px) {
     .btn {
         width: 140px;
@@ -79,16 +80,29 @@ body {
         border-width: 5px;
     }
     .title {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        margin: 75px 0 50px;
     }
-
     .start-btn {
+        left: 15%;
+        right: 15%;
+        top: auto;
+        bottom: calc(100vh - 90%);
         border-radius: 15px;
-        padding-left: 20px;
-        padding-right: 20px;
         padding-top: 20px;
         padding-bottom: 20px;
-        bottom: calc(85vh - 500px);
-        top: auto;
+    }
+}
+
+/*Small Screen Phone view */
+@media (max-width: 320px) {
+    .btn {
+        width: 110px;
+        height: 110px;
+        border-width: 5px;
+    }
+    .title {
+        font-size: 1rem;
+        margin: 50px 0 40px;
     }
 }
