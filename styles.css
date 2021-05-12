@@ -1,19 +1,37 @@
+.hide-me {
+    visibility: hidden;
+}
+
 body {
     margin: 0;
     background-color: #011F3F;
     text-align: center;
 }
 
-h1 {
+.title {
     color: #FEF2BF;
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    margin: 75px 0;
+}
+
+.start-btn {
+    position:absolute;
+    color: black;
+    left: 25%;
+    right: 25%;
+    top: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 25px;
+    background-color: pink;
+    border: 5px solid #faa5b2;
+    box-shadow: 0 0 5px #faa5b2;
 }
 
 .container {
-    width: 50%;
     margin: auto;
 }
 
@@ -24,7 +42,6 @@ h1 {
     margin: 25px;
     border: 10px solid black;
     border-radius: 20%;
-    
 }
 
 .green {
@@ -51,4 +68,27 @@ h1 {
 .game-over {
     background-color: red;
     opacity: 0.8;
+}
+
+/* Phone view */
+@media (max-width: 600px) {
+    .btn {
+        width: 140px;
+        height: 140px;
+        margin: 10px;
+        border-width: 5px;
+    }
+    .title {
+        font-size: 1rem;
+    }
+
+    .start-btn {
+        border-radius: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        bottom: calc(85vh - 500px);
+        top: auto;
+    }
 }
